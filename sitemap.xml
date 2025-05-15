@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarita Bonette Dermatologia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo" style="max-width: 150px; /* Ajuste a largura conforme necessário */">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: block;">
+                    <img src="images/Logo.png" alt="Logo Dra Sarita Bonette Dermatologia" style="max-width: 100%; height: auto; display: block;">
+                    <span class="logo-text" style="display: block; text-align: center; margin-top: 5px; font-weight: bold; /* Estilo opcional */">Dra Sarita Bonette</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre Mim</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    </ul>
+            </nav>
+            <a href="contato.html#agendamento" class="cta-button">Agende sua Consulta</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Cuidado Dermatológico Exclusivo e Sofisticado</h1>
+                <p>Oferecendo tratamentos clínicos e estéticos personalizados para a saúde e beleza da sua pele, com foco na naturalidade e bem-estar.</p>
+                <a href="servicos.html" class="cta-button">Conheça os Tratamentos</a>
+            </div>
+        </section>
+
+        <section id="services-highlights">
+            <div class="container">
+                <h2>Serviços em Destaque</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <img src="images/placeholder-clinico.jpg" alt="Dermatologia Clínica">
+                        <h3>Dermatologia Clínica</h3>
+                        <p>Diagnóstico e tratamento de doenças da pele, cabelos e unhas, com abordagem médica completa.</p>
+                        <a href="servicos.html#clinica" class="learn-more-link">Saiba Mais</a>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/placeholder-estetico.jpg" alt="Dermatologia Estética">
+                        <h3>Dermatologia Estética</h3>
+                        <p>Procedimentos avançados para rejuvenescimento e embelezamento, realçando sua beleza natural.</p>
+                        <a href="servicos.html#estetica" class="learn-more-link">Saiba Mais</a>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/placeholder-procedimento.jpg" alt="Procedimentos Específicos">
+                        <h3>Procedimentos Específicos</h3>
+                        <p>Tecnologia e expertise em procedimentos como toxina botulínica, preenchimentos e lasers.</p>
+                        <a href="servicos.html#procedimentos" class="learn-more-link">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-intro" class="about-section">
+            <div class="container">
+                <h2>Sobre Mim</h2>
+                <div class="about-content-wrapper" style="display: flex; align-items: center; gap: 40px;">
+                    <div class="about-image">
+                        <img src="images/Foto.jpg" alt="Dra. Sarita Bonette">
+                    </div>
+                    <div class="about-text">
+                        <h3>Dra. Sarita Bonette</h3>
+                        <p>Médica dermatologista dedicada a oferecer um atendimento humanizado e individualizado, combinando conhecimento técnico com sensibilidade estética. Minha missão é cuidar da saúde da sua pele e realçar sua beleza única...</p>
+                        <a href="sobre.html" class="learn-more-link">Leia Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-highlights">
+            <div class="container">
+                <h2>Últimas do Blog</h2>
+                <div class="blog-grid">
+                    <div class="blog-item">
+                        <img src="images/placeholder-blog1.jpg" alt="Blog Post 1">
+                        <h3>Título do Artigo 1</h3>
+                        <p>Um breve resumo do conteúdo do artigo, convidando à leitura...</p>
+                        <a href="blog/post1.html" class="learn-more-link">Leia Mais</a>
+                    </div>
+                    <div class="blog-item">
+                        <img src="images/placeholder-blog2.jpg" alt="Blog Post 2">
+                        <h3>Título do Artigo 2</h3>
+                        <p>Outro resumo interessante sobre cuidados com a pele ou novidades...</p>
+                        <a href="blog/post2.html" class="learn-more-link">Leia Mais</a>
+                    </div>
+                    <div class="blog-item">
+                        <img src="images/placeholder-blog3.jpg" alt="Blog Post 3">
+                        <h3>Título do Artigo 3</h3>
+                        <p>Mais um tópico relevante abordado no blog da clínica...</p>
+                        <a href="blog/post3.html" class="learn-more-link">Leia Mais</a>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="blog.html" class="cta-button">Ver Todos os Posts</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre Mim</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="#">Política de Privacidade</a></li> </ul>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <p>
+                    WhatsApp: (21) 98285-0393<br>
+                    Email: contato@dermatosaritabonette.com.br
+                </p>
+            </div>
+            <div>
+                <h4>Horário de Atendimento</h4>
+                <p>
+                    Segunda a Sexta: 9h às 18h<br>
+                    Sábado: 9h às 12h (Opcional)
+                </p>
+                <h4>Siga-nos</h4>
+                <div class="social-icons">
+                    <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/5521982850393" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a> </div>
+            </div>
+            </div>
+        <div class="footer-bottom">
+            &copy; 2025 Sarita Bonette Dermatologia. Todos os direitos reservados. </div>
+    </footer>
+
+    </body>
+</html>
