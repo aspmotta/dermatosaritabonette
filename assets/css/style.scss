@@ -1,0 +1,29 @@
+/* ------------------------------------------------------
+   styles.css | Paleta "Clássico Neutro" – v1.0
+------------------------------------------------------ */
+:root{
+  --color-bg:#FFFFFF;
+  --color-section:#F7F4F1;
+  --color-element:#E8DFD7;
+  --color-text:#1F2F3C;
+  --color-accent:#9AB7A1;
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Poppins',sans-serif;background:var(--color-bg);color:var(--color-text);line-height:1.6;}
+h1,h2,h3{font-family:'Playfair Display',serif;font-style:italic;}
+.container{width:min(90%,1100px);margin-inline:auto;}
+.text-center{text-align:center;}
+.flex-between{display:flex;justify-content:space-between;align-items:center;}
+.flex-wrap{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;}
+.btn{display:inline-block;padding:.75rem 1.5rem;border-radius:var(--radius);font-weight:600;text-decoration:none;transition:opacity .2s;}
+.btn--primary{background:var(--color-accent);color:#fff;}
+.btn--primary:hover{opacity:.85;}
+.card{background:var(--color-section);border-radius:var(--radius);padding:1.5rem;flex:1 1 260px;max-width:320px;text-align:center;}
+.site-header{position:sticky;top:0;z-index:999;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:.5rem 0;}
+.main-nav .nav-link{margin:0 .75rem;font-weight:500;color:var(--color-text);text-decoration:none;}
+.main-nav .nav-link:hover{color:var(--color-accent);}
+.hero{background:var(--color-section);padding:4rem 1rem;}
+.hero h1{font-size:2rem;margin-bottom:1rem;}
+@media(min-width:768px){.hero h1{font-size:2.5rem;}}
+.differences{padding:3rem 1rem;background:var(--color-bg);}
