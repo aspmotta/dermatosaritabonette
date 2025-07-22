@@ -15,9 +15,88 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <link rel="stylesheet" href="/dermatosaritabonette/assets/css/styles.css">
-    <link rel="stylesheet" href="/dermatosaritabonette/assets/css/components.css">
-    <link rel="stylesheet" href="/dermatosaritabonette/assets/css/utilities.css">
+    <style>
+    /* Critical CSS */
+    :root {
+      --color-bg: #FFFFFF;
+      --color-section: #F7F4F1;
+      --color-element: #E8DFD7;
+      --color-text: #1F2F3C;
+      --color-accent: #5c7c63;
+      --radius: 8px;
+      --font-heading: 'Cormorant Garamond', serif;
+      --font-serif: 'Lora', serif;
+      --font-sans: 'Poppins', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 100%; }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text); line-height: 1.6; font-size: 1rem; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 600; margin-bottom: 0.75em; line-height: 1.3; color: var(--color-text); }
+    a { color: var(--color-accent); text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #819c89; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { width: 90%; max-width: 1100px; margin-inline: auto; padding-left: 15px; padding-right: 15px; }
+    .flex-between { display: flex; justify-content: space-between; align-items: center; }
+    .btn { display: inline-block; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-family: var(--font-sans); font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; border: 1px solid transparent; cursor: pointer; text-align: center; }
+    .btn--primary { background-color: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+    .btn--primary:hover { background-color: #819c89; border-color: #819c89; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .site-header { position: sticky; top: 0; z-index: 999; background: var(--color-bg); box-shadow: 0 2px 8px rgba(0,0,0,.05); padding: 0.5rem 0; min-height: 80px; display: flex; align-items: center; }
+    .logo a { display: inline-block; }
+    .logo img { height: 80px; width: auto; }
+    .main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+    .main-nav .nav-link { margin: 0 0.85rem; padding: 0.5rem 0.25rem; font-weight: 500; font-size: 0.95rem; font-family: var(--font-sans); color: var(--color-text); position: relative; }
+    .main-nav .nav-link:hover, .main-nav .nav-link.active { color: var(--color-accent); }
+    .main-nav .nav-link.active::after, .main-nav .nav-link:hover::after { content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background-color: var(--color-accent); transition: width 0.3s ease; }
+    .main-nav .nav-link.active::after { width: 60%; }
+    .header-actions { display: flex; align-items: center; gap: 1rem; }
+    .hamburger-menu { display: none; background: transparent; border: none; cursor: pointer; padding: 8px; z-index: 1001; width: 40px; height: 40px; justify-content: center; align-items: center; flex-direction: column; }
+    .hamburger-menu span { display: block; width: 26px; height: 3px; background-color: var(--color-text); margin: 2.5px 0; border-radius: 3px; transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); }
+    .hero-background-image-v2 { position: relative; background-image: url('../images/dra-sarita.jpg'); background-size: cover; background-repeat: no-repeat; color: var(--color-bg); padding: 0; min-height: 85vh; display: flex; align-items: center; background-position: 80% 20%; }
+    .hero-background-image-v2::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to right, rgba(31, 47, 60, 0.80) 0%, rgba(31, 47, 60, 0.55) 40%, rgba(31, 47, 60, 0.15) 65%, transparent 100%); z-index: 1; }
+    .hero-background-image-v2 .container { position: relative; z-index: 2; width: 100%; display: flex; align-items: center; min-height: inherit; }
+    .hero-background-image-v2 .hero-content { max-width: 45%; min-width: 380px; margin-left: 0; margin-right: auto; text-align: left; padding: 2rem 0; }
+    .hero-background-image-v2 .hero-content h1 { font-size: clamp(2.5em, 5vw, 3.6em); line-height: 1.18; margin-bottom: 1.2rem; color: inherit; text-shadow: 1px 1px 6px rgba(0,0,0,0.65); }
+    .hero-background-image-v2 .hero-content .subheadline { font-size: clamp(1em, 2.3vw, 1.35em); margin-bottom: 2.5rem; font-weight: 300; line-height: 1.65; color: inherit; text-shadow: 1px 1px 4px rgba(0,0,0,0.55); }
+    .hero-background-image-v2 .btn--hero { padding: 1rem 2.5rem; font-size: 1.05rem; }
+    @media (max-width: 992px) {
+        .logo img { height: 70px; }
+        .main-nav .nav-link { margin: 0 0.6rem; font-size: 0.9rem; }
+        .header-actions .btn--primary { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+        .hero-background-image-v2 { min-height: 75vh; padding: 5rem 0; background-position: center 25%; }
+        .hero-background-image-v2::before { background: linear-gradient(to right, rgba(31, 47, 60, 0.70) 0%, rgba(31, 47, 60, 0.5) 50%, rgba(31, 47, 60, 0.2) 75%, transparent 100%); }
+        .hero-background-image-v2 .hero-content { max-width: 60%; margin-left: auto; margin-right: auto; text-align: center; padding: 1.5rem; }
+        .hero-background-image-v2 .hero-content h1 { font-size: clamp(2.2em, 4.5vw, 3em); }
+        .hero-background-image-v2 .hero-content .subheadline { font-size: clamp(1em, 2.1vw, 1.25em); }
+    }
+    @media (max-width: 768px) {
+        .logo img { height: 60px; }
+        .main-nav ul { display: none; }
+        .hamburger-menu { display: inline-flex !important; }
+        .main-nav { display: none !important; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--color-bg); box-shadow: 0 6px 12px rgba(0,0,0,.1); border-top: 1px solid var(--color-element); padding: 0.5rem 0; z-index: 1000; }
+        .main-nav.active { display: flex !important; }
+        .main-nav.active ul { display: flex !important; flex-direction: column; width: 100%; }
+        .main-nav.active ul li { margin-left: 0; width: 100%; }
+        .main-nav.active .nav-link { padding: 0.85rem 1.5rem; width: 100%; display: block; text-align: left; border-bottom: 1px solid var(--color-element); margin: 0; }
+        .main-nav.active .nav-link.active::after, .main-nav.active .nav-link:hover::after { display: none; }
+        .main-nav.active ul li:last-child .nav-link { border-bottom: none; }
+        .hamburger-menu.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+        .hamburger-menu.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        .header-actions .btn--primary { padding: 0.5rem 1rem; font-size: 0.85rem; white-space: nowrap; }
+        .hero-background-image-v2 { min-height: 70vh; background-position: center 10%; align-items: flex-end; padding: 0; }
+        .hero-background-image-v2 .container { padding: 0 15px 3rem; display: flex; flex-direction: column; justify-content: flex-end; min-height: inherit; padding-top: 30vh; }
+        .hero-background-image-v2 .hero-content { max-width: 95%; min-width: unset; margin-left: auto; margin-right: auto; text-align: center; padding: 1.5rem; background-color: transparent; border-radius: var(--radius); margin-bottom: 0; }
+        .hero-background-image-v2 .hero-content h1 { font-size: clamp(1.9em, 5.8vw, 2.4em); line-height: 1.25; }
+        .hero-background-image-v2 .hero-content .subheadline { font-size: clamp(0.95em, 3.2vw, 1.1em); margin-bottom: 1.5rem; line-height: 1.55; }
+        .hero-background-image-v2 .btn--hero { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+    }
+    </style>
+    <link rel="stylesheet" href="/dermatosaritabonette/assets/css/styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/dermatosaritabonette/assets/css/styles.css"></noscript>
+    <link rel="stylesheet" href="/dermatosaritabonette/assets/css/components.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/dermatosaritabonette/assets/css/components.css"></noscript>
+    <link rel="stylesheet" href="/dermatosaritabonette/assets/css/utilities.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/dermatosaritabonette/assets/css/utilities.css"></noscript>
     
     <meta property="og:title" content="Dra. Sarita Bonette - Dermatologista Especialista no Rio de Janeiro">
     <meta property="og:description" content="Cuide da saúde e beleza da sua pele com a Dra. Sarita Bonette. Atendimento dermatológico focado em você.">
