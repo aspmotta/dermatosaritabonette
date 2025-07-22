@@ -1,0 +1,1795 @@
+/* ------------------------------------------------------
+   styles.css | Paleta "Clássico Neutro" – v1.0
+   Projeto Dra. Sarita Bonette
+------------------------------------------------------ */
+
+/* ---------------------------------- */
+/* VARIAVEIS GLOBAIS (ROOT)           */
+/* ---------------------------------- */
+:root {
+  --color-bg: #FFFFFF;
+  --color-section: #F7F4F1;
+  --color-element: #E8DFD7;
+  --color-text: #1F2F3C;
+  --color-accent: #5c7c63; /* Verde/Dourado sofisticado */
+  --radius: 8px;
+
+  /* Fontes */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-serif: 'Lora', serif; 
+  --font-sans: 'Poppins', sans-serif;
+}
+
+/* ---------------------------------- */
+/* RESET BÁSICO E ESTILOS GLOBAIS     */
+/* ---------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%; 
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 1rem; /* 16px */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #819c89; 
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------------------------------- */
+/* ESTILOS GERAIS DE SEÇÃO            */
+/* ---------------------------------- */
+.section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(1.8em, 4vw, 2.5em);
+    margin-bottom: 2.5rem;
+    position: relative;
+    text-align: center;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: var(--color-accent);
+  margin: 0.75rem auto 0;
+}
+
+/* Ajustes mobile para estilos gerais de seção */
+@media (max-width: 768px) {
+    .section-padding {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .section-title {
+        margin-bottom: 2rem;
+        font-size: clamp(1.7em, 5vw, 2.2em);
+    }
+}
+
+
+/* ---------------------------------- */
+/* HEADER                             */
+/* ---------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: var(--color-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  padding: 0.5rem 0;
+  min-height: 80px; 
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  display: inline-block;
+}
+
+.logo img {
+  height: 80px; 
+  width: auto;
+}
+
+.main-nav ul { /* Esta regra se aplica ao UL dentro do NAV */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Faz os LIs ficarem em linha no desktop */
+}
+
+/* Regra para o NAV em si (container da UL) */
+.main-nav {
+    /* No desktop, ele é apenas um container.
+       No mobile, ele se torna o menu dropdown. */
+}
+
+.main-nav .nav-link {
+  margin: 0 0.85rem;
+  padding: 0.5rem 0.25rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  position: relative;
+}
+
+.main-nav .nav-link:hover,
+.main-nav .nav-link.active {
+  color: var(--color-accent);
+}
+
+.main-nav .nav-link.active::after,
+.main-nav .nav-link:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+.main-nav .nav-link.active::after {
+    width: 60%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hamburger-menu {
+  display: none;  /* ESCONDIDO POR PADRÃO NO DESKTOP */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background-color: var(--color-text);
+  margin: 2.5px 0;
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Header Responsivo */
+@media (max-width: 992px) { /* Tablet - Menu ainda visível, mas menor */
+    .logo img {
+        height: 70px;
+    }
+    .main-nav .nav-link {
+        margin: 0 0.6rem;
+        font-size: 0.9rem;
+    }
+    .header-actions .btn--primary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    /* IMPORTANTE: Neste breakpoint, .main-nav ul ainda está display: flex (desktop)
+       e .hamburger-menu ainda está display: none (desktop) */
+}
+
+@media (max-width: 768px) { /* Mobile - Onde o menu hambúrguer deve ativar */
+    .logo img {
+        height: 60px;
+    }
+
+    /* Esconder o menu de navegação normal */
+    .main-nav ul {         /* (1) ESTA REGRA ESCONDE A LISTA DE LINKS */
+      display: none;
+    }
+    
+    /* Mostrar o botão hambúrguer */
+    .hamburger-menu { 
+      display: inline-flex !important; /* (2) MOSTRA O BOTÃO HAMBÚRGUER (important para garantir) */
+    }
+
+    /* Estilos para o menu dropdown (o <nav id="mainNav">) quando está fechado */
+    .main-nav {  /* (3) O CONTAINER DO MENU COMEÇA ESCONDIDO */
+      display: none !important; /* GARANTE QUE COMECE ESCONDIDO (important para teste) */
+      flex-direction: column;
+      position: absolute;
+      top: 100%; /* Posiciona abaixo do header */
+      left: 0;
+      width: 100%;
+      background-color: var(--color-bg);
+      box-shadow: 0 6px 12px rgba(0,0,0,.1);
+      border-top: 1px solid var(--color-element);
+      padding: 0.5rem 0;
+      z-index: 1000; /* Para ficar sobre o conteúdo principal */
+    }
+
+    /* Estilos para o menu dropdown QUANDO ATIVO */
+    .main-nav.active { 
+      display: flex !important; /* (4) MOSTRA O CONTAINER DO MENU QUANDO .active É ADICIONADO */
+    }
+
+    /* Estilos para a lista de links DENTRO do menu dropdown ativo */
+    .main-nav.active ul { 
+        display: flex !important; /* (5) MOSTRA A LISTA DE LINKS DENTRO DO MENU ATIVO (important para teste) */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav.active ul li {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .main-nav.active .nav-link {
+      padding: 0.85rem 1.5rem;
+      width: 100%;
+      display: block;
+      text-align: left; 
+      border-bottom: 1px solid var(--color-element);
+      margin: 0;
+    }
+
+    .main-nav.active .nav-link.active::after,
+    .main-nav.active .nav-link:hover::after {
+        display: none; 
+    }
+
+    .main-nav.active ul li:last-child .nav-link {
+      border-bottom: none;
+    }
+    
+    /* Animação do Hamburger para "X" quando ele tem a classe .active */
+    .hamburger-menu.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+    .hamburger-menu.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .header-actions .btn--primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+}
+
+/* ---------------------------------- */
+/* HERO SECTION (PÁGINA INICIAL)      */
+/* ---------------------------------- */
+.hero-background-image-v2 {
+    position: relative;
+    background-image: url('../images/dra-sarita.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--color-bg); 
+    padding: 0;
+    min-height: 85vh; 
+    display: flex;
+    align-items: center;
+    background-position: 80% 20%; /* AJUSTE FINO AQUI PARA DESKTOP */
+}
+
+.hero-background-image-v2::before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(31, 47, 60, 0.80) 0%, rgba(31, 47, 60, 0.55) 40%, rgba(31, 47, 60, 0.15) 65%, transparent 100%);
+    z-index: 1;
+}
+
+.hero-background-image-v2 .container {
+    position: relative;
+    z-index: 2; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: inherit; 
+}
+
+.hero-background-image-v2 .hero-content {
+    max-width: 45%;
+    min-width: 380px; 
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+    padding: 2rem 0; 
+}
+
+.hero-background-image-v2 .hero-content h1 {
+    font-size: clamp(2.5em, 5vw, 3.6em);
+    line-height: 1.18;
+    margin-bottom: 1.2rem;
+    color: inherit;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.65);
+}
+
+.hero-background-image-v2 .hero-content .subheadline {
+    font-size: clamp(1em, 2.3vw, 1.35em);
+    margin-bottom: 2.5rem;
+    font-weight: 300; 
+    line-height: 1.65;
+    color: inherit;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.55);
+}
+
+.hero-background-image-v2 .btn--hero { /* Estilo para o botão específico do Hero */
+    /* Herda de .btn e .btn--primary do components.css */
+    padding: 1rem 2.5rem;
+    font-size: 1.05rem;
+}
+
+/* Hero Responsivo */
+@media (max-width: 992px) { /* Tablet */
+    .hero-background-image-v2 {
+        min-height: 75vh;
+        padding: 5rem 0;
+        background-position: center 25%; /* AJUSTE FINO */
+    }
+    .hero-background-image-v2::before { 
+        background: linear-gradient(to right, rgba(31, 47, 60, 0.70) 0%, rgba(31, 47, 60, 0.5) 50%, rgba(31, 47, 60, 0.2) 75%, transparent 100%);
+    }
+    .hero-background-image-v2 .hero-content {
+        max-width: 60%;
+        margin-left: auto; 
+        margin-right: auto;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    .hero-background-image-v2 .hero-content h1 {
+         font-size: clamp(2.2em, 4.5vw, 3em);
+    }
+    .hero-background-image-v2 .hero-content .subheadline {
+        font-size: clamp(1em, 2.1vw, 1.25em);
+    }
+}
+
+@media (max-width: 768px) { /* Mobile */
+    .hero-background-image-v2 {
+        min-height: 70vh;
+        background-position: center 10%; /* AJUSTE FINO */
+        align-items: flex-end; 
+        padding: 0; 
+    }
+    .hero-background-image-v2 .container {
+        padding: 0 15px 3rem; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: inherit;
+        padding-top: 30vh; /* Para "abaixar" o texto */
+    }
+    /*.hero-background-image-v2::before { 
+   /*     background: linear-gradient(to top, rgba(31, 47, 60, 0.9) 0%, rgba(31, 47, 60, 0.65) 45%, rgba(31, 47, 60, 0.2) 85%, transparent 100%);
+   /* }
+    .hero-background-image-v2 .hero-content {
+        max-width: 95%;
+        min-width: unset;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 1.5rem;
+        background-color: transparent; /* REMOVIDO o fundo extra no mobile content */
+        border-radius: var(--radius); /* Pode manter se gostar do efeito de "box" sutil */
+        margin-bottom: 0;
+    }
+    .hero-background-image-v2 .hero-content h1 {
+        font-size: clamp(1.9em, 5.8vw, 2.4em);
+        line-height: 1.25;
+    }
+    .hero-background-image-v2 .hero-content .subheadline {
+        font-size: clamp(0.95em, 3.2vw, 1.1em);
+        margin-bottom: 1.5rem;
+        line-height: 1.55;
+    }
+    .hero-background-image-v2 .btn--hero {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ---------------------------------- */
+/* SEÇÃO DIFERENCIAIS                 */
+/* ---------------------------------- */
+.diferenciais-section {
+    background-color: var(--color-bg); 
+    /* .section-padding é aplicado no HTML */
+}
+
+.diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Mantém responsivo */
+    gap: 2rem;
+}
+/* Conteúdo de .card--diferencial está no components.css */
+
+/* Diferenciais Responsivo */
+@media (max-width: 768px) { /* Mobile */
+    .diferenciais-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    /* Ajustes internos do .card--diferencial (ex: padding, font-size)
+       devem estar no components.css dentro de uma media query similar,
+       ou aqui se forem específicos para esta seção.
+       Ex:
+       .diferenciais-section .card--diferencial { padding: 1.25rem; }
+       .diferenciais-section .card--diferencial h3 { font-size: 1.2em; }
+    */
+}
+
+
+/* ---------------------------------- */
+/* SEÇÃO SOBRE MIM (INTRO - HOMEPAGE) */
+/* ---------------------------------- */
+.sobre-intro-section {
+    background-color: var(--color-section); 
+    /* .section-padding é aplicado no HTML */
+}
+
+.sobre-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; 
+    gap: 3rem; 
+    align-items: center;
+}
+
+.sobre-intro-image img {
+    border-radius: var(--radius); 
+    box-shadow: 0 6px 15px rgba(31, 47, 60, 0.1);
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+
+.sobre-intro-text .section-title {
+    text-align: left; 
+    margin-bottom: 1.5rem; 
+}
+.sobre-intro-text .section-title::after {
+    margin-left: 0; 
+    margin-right: auto; 
+}
+
+.sobre-intro-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem; 
+    line-height: 1.7;
+}
+
+.sobre-intro-text .btn--primary { /* Botão Saiba Mais Sobre Mim */
+    margin-top: 1rem; 
+}
+
+/* Sobre Intro Responsivo */
+@media (max-width: 992px) { /* Tablet e abaixo */
+    .sobre-intro-grid {
+        grid-template-columns: 1fr; 
+        gap: 2rem; 
+        text-align: center; 
+    }
+    .sobre-intro-image {
+        margin-bottom: 1rem; 
+    }
+    .sobre-intro-image img {
+        max-width: 320px; 
+    }
+    .sobre-intro-text .section-title {
+        text-align: center; 
+    }
+    .sobre-intro-text .section-title::after {
+        margin-left: auto; 
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) { /* Mobile */
+    .sobre-intro-image img {
+        max-width: 280px;
+    }
+    .sobre-intro-text p {
+        font-size: 0.95rem;
+    }
+    .sobre-intro-text .btn--primary {
+        width: 100%; 
+        max-width: 300px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+/* ---------------------------------- */
+/* SEÇÃO CITAÇÃO INSPIRADORA          */
+/* ---------------------------------- */
+.citacao-section {
+    background-color: var(--color-accent); 
+    color: var(--color-bg); 
+    text-align: center;
+    /* .section-padding aplicado no HTML */
+}
+
+.citacao-content {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 2rem 0; 
+    border: none;
+    quotes: none; 
+    position: relative;
+}
+
+.citacao-content::before { /* Aspas grandes */
+    content: '\201C'; 
+    font-family: var(--font-heading); 
+    font-size: 6em; 
+    line-height: 0.5; 
+    color: var(--color-bg); 
+    opacity: 0.35; 
+    display: block;
+    margin-bottom: 0.5rem; 
+}
+
+.citacao-content p { 
+    font-family: var(--font-heading);
+    font-size: clamp(1.5em, 3.5vw, 2.1em); 
+    font-weight: 500;
+    line-height: 1.45;
+    color: inherit; 
+    margin-bottom: 2rem; 
+    position: relative; 
+    z-index: 1; 
+}
+
+.citacao-atribuicao-wrapper {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    gap: 0.75rem; 
+    margin-top: 1rem; 
+}
+
+.citacao-content cite { 
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: inherit; 
+    opacity: 0.95; 
+}
+
+.assinatura-citacao { 
+    display: block;
+    height: 80px; 
+    width: auto;  
+    max-width: 200px; 
+    fill: currentColor; 
+}
+
+/* Citação Responsivo */
+@media (max-width: 768px) { 
+    .citacao-content::before {
+        font-size: 5em; 
+        margin-bottom: 0.25rem;
+    }
+    .citacao-content p {
+        font-size: clamp(1.3em, 4.5vw, 1.8em);
+    }
+    .citacao-content cite {
+        font-size: 1rem;
+    }
+    .assinatura-citacao {
+        height: 50px; 
+    }
+}
+
+
+/* --------------------------------------------------- */
+/* SEÇÃO "COMO POSSO CUIDAR DE VOCÊ?" (Layout Irregular Revisado) */
+/* --------------------------------------------------- */
+.como-posso-cuidar-section {
+    background-color: var(--color-bg); /* Fundo BRANCO para a seção */
+    /* .section-padding é aplicado no HTML, confira se ele tem os valores corretos:
+       .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
+       @media (max-width: 768px) { .section-padding { padding-top: 3rem; padding-bottom: 3rem; } }
+    */
+}
+
+.como-posso-cuidar-grid.irregular-cards-grid {
+    display: grid;
+    gap: 1.25rem; /* Gap entre os cards */
+    /* Mobile: 1 coluna por padrão. Breakpoints definirão outras colunas. */
+    grid-template-columns: 1fr;
+}
+
+/* Estilos base para os cards desta seção (herdam de .card do components.css) */
+.card--cuidados-img-focus {
+    /* .card em components.css já define:
+       background: var(--color-section); (BEGE)
+       border-radius: var(--radius);
+       box-shadow: 0 4px 12px rgba(31, 47, 60, 0.08);
+       color: var(--color-text);
+       display: flex;
+       flex-direction: column;
+       height: 100%;
+    */
+    padding: 0; /* Sobrescreve o padding base do .card */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 280px; /* Altura mínima base - será ajustada em media queries */
+}
+
+.card--cuidados-img-focus:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(31, 47, 60, 0.18);
+}
+
+.card--cuidados-img-focus .card-image-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.card--cuidados-img-focus .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center; /* Ajuste fino por imagem, se necessário */
+    transition: transform 0.4s ease;
+    border-radius: inherit; /* Para garantir que a imagem siga o radius do card */
+}
+
+.card--cuidados-img-focus:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card--cuidados-img-focus .card-content-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 1.25rem; /* Padding para o texto não colar nas bordas */
+    /* BACKGROUND REMOVIDO - Degradê virá da imagem editada */
+    color: var(--color-bg); /* Texto branco */
+    text-align: center; /* Títulos alinhados à esquerda por padrão no desktop/tablet */
+    z-index: 2;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 50px; /* Altura mínima para o overlay do título, ajuste */
+    pointer-events: none;
+}
+
+.card--cuidados-img-focus h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1em, 2.2vw, 1.35em); /* Tamanho para o título destacado */
+    font-weight: 700; /* Negrito */
+    line-height: 1.3;
+    color: inherit;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.65); /* Sombra para legibilidade sobre a imagem */
+    margin-bottom: 0;
+    pointer-events: auto;
+    width: 100%;
+}
+
+
+/* Media Queries para o Grid Irregular */
+
+/* Mobile (até 767px) */
+@media (max-width: 767px) {
+    .como-posso-cuidar-grid.irregular-cards-grid {
+        grid-template-columns: 1fr; /* Garante 1 coluna */
+    }
+    .irregular-cards-grid .grid-item,
+    .irregular-cards-grid .grid-item--largo,
+    .irregular-cards-grid .grid-item--alto {
+        grid-column: span 1 !important; /* Força span 1 para todos */
+        grid-row: span 1 !important;    /* Força span 1 para todos */
+    }
+    .card--cuidados-img-focus {
+        min-height: 280px; /* Cards altos no mobile */
+    }
+    .card--cuidados-img-focus .card-content-overlay {
+        text-align: center;
+    }
+    /* ... (outros ajustes mobile para h3, etc.) ... */
+}
+
+/* Tablet (a partir de 768px) - Pode ser um 2x3 simples ou um início do irregular */
+/* Tablet (768px até 1023px) - Ajustando para o card alto ocupar mais espaço vertical */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .como-posso-cuidar-grid.irregular-cards-grid {
+        grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas base */
+        /* Altura mínima de cada "célula" de linha.
+           Se o card alto ocupar 3 células, sua altura será 3x este valor + gaps. */
+        grid-auto-rows: minmax(250px, auto); /* AJUSTE esta altura base da linha do grid! */
+        gap: 1.25rem;
+    }
+
+    /* Resetar spans para este breakpoint */
+    .irregular-cards-grid .grid-item {
+        grid-column: span 1; /* Padrão: ocupa 1 coluna de largura */
+        grid-row: span 1;    /* Padrão: ocupa 1 linha de altura */
+    }
+
+    /* LAYOUT PARA TABLET COM CARD ALTO OCUPANDO MAIS ESPAÇO:
+       Linha 1: [ Card 1 (Largo - ocupa 2 colunas) ]
+       Linha 2: [ Card 3 (Alto - ocupa 1 coluna de largura, MAS 3 LINHAS DE ALTURA) ] [ Card 2 (Normal - 1x1) ]
+       Linha 3: [ Card 3 (continua) ]                                                [ Card 4 (Normal - 1x1) ]
+       Linha 4: [ Card 3 (continua) ]                                                [ Card 5 (Normal - 1x1) ]
+       Linha 5: [ Card 6 (Largo - ocupa 2 colunas) ]
+       Isto faria o card 3 muito alto, e o card 2, 4, 5 se alinhariam ao lado.
+       O card 6 ficaria abaixo de tudo.
+    */
+
+    .irregular-cards-grid .grid-item:nth-child(1) { /* Card 1 - Pele Renovada (Largo) */
+        grid-column: span 2; /* Ocupa toda a primeira linha */
+        grid-row: span 1;    /* Apenas uma unidade de altura de linha */
+    }
+
+    .irregular-cards-grid .grid-item:nth-child(3).grid-item--alto { /* Card 3 - Saúde Capilar (ALTO) */
+        grid-column: 1 / 2;   /* Ocupa a primeira coluna */
+        grid-row: span 3;     /* <<< AUMENTADO PARA OCUPAR 3 UNIDADES DE LINHA DE ALTURA */
+    }
+
+    /* Cards que ficarão ao lado do card alto */
+    .irregular-cards-grid .grid-item:nth-child(2) { /* Card 2 - Expressão Suave */
+        grid-column: 2 / 3;   /* Segunda coluna */
+        grid-row: 2 / 3;      /* Linha "do meio" ao lado da parte superior do card alto */
+                               /* Se o card alto começa na linha 2 e vai até a linha 4 (2,3,4),
+                                  este card 2 ficaria na linha 2. */
+    }
+    .irregular-cards-grid .grid-item:nth-child(4) { /* Card 4 - Sinais e Lesões */
+        grid-column: 2 / 3;   /* Segunda coluna */
+        grid-row: 3 / 4;      /* Abaixo do Card 2, ao lado da parte do meio do card alto */
+    }
+    .irregular-cards-grid .grid-item:nth-child(5) { /* Card 5 - Firmeza */
+        grid-column: 2 / 3;   /* Segunda coluna */
+        grid-row: 4 / 5;      /* Abaixo do Card 4, ao lado da parte inferior do card alto */
+    }
+
+
+    .irregular-cards-grid .grid-item:nth-child(6) { /* Card 6 - Manchas (Largo) */
+        grid-column: span 2; /* Ocupa toda a última linha */
+        grid-row: 5 / 6;     /* Na linha após o card alto e seus vizinhos */
+    }
+
+
+    /* Ajuste de altura (min-height) para os cards */
+    /* Cards normais (2, 4, 5) terão a altura de `grid-auto-rows` */
+    .irregular-cards-grid .grid-item .card--cuidados-img-focus {
+        min-height: var(--altura-base-card-tablet, 250px); /* Use uma variável ou o valor de grid-auto-rows */
+    }
+
+    /* Card Alto (Card 3) */
+    .irregular-cards-grid .grid-item:nth-child(3).grid-item--alto .card--cuidados-img-focus {
+        min-height: calc( (var(--altura-base-card-tablet, 250px) * 3) + (1.25rem * 2) ); /* (altura_linha * 3) + (gap * 2) */
+    }
+
+    /* Cards Largos (1 e 6) podem ter a mesma altura dos normais ou uma específica */
+    .irregular-cards-grid .grid-item:nth-child(1) .card--cuidados-img-focus,
+    .irregular-cards-grid .grid-item:nth-child(6) .card--cuidados-img-focus {
+        min-height: var(--altura-base-card-tablet, 250px); /* Ou um pouco menos se forem largos, ex: 280px */
+    }
+}
+
+/* Desktop (a partir de 1024px) - Layout Irregular com base de 3 colunas */
+@media (min-width: 1024px) {
+    .como-posso-cuidar-grid.irregular-cards-grid {
+        display: grid; /* Certifique-se que display: grid está aqui */
+        grid-template-columns: repeat(3, 1fr); /* Base de 3 colunas iguais */
+        /* Altura MÍNIMA de cada trilha de linha do grid.
+           Os cards "normais" (1x1) e "largos" (2x1) terão esta altura.
+           O card "alto" (1x2) terá o dobro desta altura + o gap.
+           AJUSTE ESTE VALOR (300px) CONFORME A ALTURA DESEJADA PARA OS CARDS MENORES. */
+        grid-auto-rows: minmax(300px, auto);
+        gap: 1.5rem;
+    }
+
+    /* Definindo a posição e o span de cada item no grid */
+    .irregular-cards-grid .grid-item:nth-child(1) { /* Card 1 - Largo */
+        grid-column: 1 / 3;  /* Ocupa colunas 1 e 2 */
+        grid-row: 1 / 2;     /* Ocupa linha 1 */
+    }
+    .irregular-cards-grid .grid-item:nth-child(2) { /* Card 2 - Normal */
+        grid-column: 3 / 4;  /* Ocupa coluna 3 */
+        grid-row: 1 / 2;     /* Ocupa linha 1 */
+    }
+    .irregular-cards-grid .grid-item:nth-child(3) { /* Card 3 - Alto e Estreito */
+        grid-column: 1 / 2;  /* Ocupa coluna 1 */
+        grid-row: 2 / 4;     /* Ocupa linhas 2 E 3 */
+    }
+    .irregular-cards-grid .grid-item:nth-child(4) { /* Card 4 - Normal */
+        grid-column: 2 / 3;  /* Ocupa coluna 2 */
+        grid-row: 2 / 3;     /* Ocupa linha 2 (ao lado da parte superior do Card 3) */
+    }
+    .irregular-cards-grid .grid-item:nth-child(5) { /* Card 5 - Normal */
+        grid-column: 3 / 4;  /* Ocupa coluna 3 */
+        grid-row: 2 / 3;     /* Ocupa linha 2 (ao lado do Card 4) */
+    }
+    .irregular-cards-grid .grid-item:nth-child(6) { /* Card 6 - Largo */
+        grid-column: 2 / 4;  /* Ocupa colunas 2 e 3 */
+        grid-row: 3 / 4;     /* Ocupa linha 3 (ao lado da parte inferior do Card 3) */
+    }
+
+    /* Ajuste de altura (min-height) para os cards para garantir que preencham o espaço do grid */
+    .irregular-cards-grid .grid-item .card--cuidados-img-focus {
+         min-height: 100%; /* Faz o card tentar preencher a altura da célula do grid */
+         height: 100%; /* Adicionado para garantir o preenchimento */
+    }
+    /* Não precisamos de min-heights específicos aqui se grid-auto-rows e os spans de linha estiverem corretos,
+       pois o height: 100% no card fará com que ele se estique.
+       A altura visual será controlada pelo grid-auto-rows.
+    */
+}
+
+/* ---------------------------------- */
+/* SEÇÃO DESTAQUES DO BLOG            */
+/* ---------------------------------- */
+.blog-destaques-section {
+    background-color: var(--color-section); /* Fundo Bege */
+    /* .section-padding aplicado no HTML */
+}
+
+.blog-carousel-wrapper {
+    position: relative; /* Para posicionar os controles do carrossel */
+}
+
+/* Estilos base para o container dos cards de blog */
+.blog-destaques-grid { /* No desktop, continua sendo um grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Estilos para .card--blog-post (pode ir para components.css como variação de .card) */
+/* A classe base .card já está em components.css e define fundo bege, radius, shadow base */
+.card--blog-post {
+    /* Herda de .card (fundo bege). Se quiser fundo branco para os cards de blog aqui: */
+    /* background-color: var(--color-bg); */
+    padding: 0; /* Resetar padding base do .card */
+    text-align: left; /* Alinhamento do texto dentro do card */
+    /* Efeito de hover já pode ser herdado de .card ou .card--diferencial se definido de forma genérica
+       ou adicionar um específico: */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card--blog-post:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(31, 47, 60, 0.12);
+}
+
+.card--blog-post .card-image-placeholder,
+.card--blog-post .card-image {
+    width: 100%;
+    height: 200px; /* Altura para a imagem de destaque do post - ajuste */
+    object-fit: cover;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background-color: var(--color-element); /* Cor do placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.card--blog-post .card-content {
+    padding: 1.25rem 1.5rem 1.5rem; /* Padding interno */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para o link "Ler Artigo" ficar na base */
+}
+
+.blog-post-meta {
+    font-size: 0.8rem;
+    color: var(--color-text);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+}
+
+.card--blog-post h3 {
+    font-size: clamp(1.15em, 2.5vw, 1.35em);
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+}
+
+.card--blog-post .card-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+    flex-grow: 1; /* Empurra o link para baixo */
+    /* Limitar número de linhas do excerto (opcional, mais avançado com JS ou line-clamp) */
+    /* display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden; */
+}
+
+/* Controles do Carrossel (escondidos por padrão, mostrados no mobile) */
+.carousel-controls {
+    display: none; /* Escondido no desktop */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.carousel-button {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: #819c89; /* Tom mais escuro do accent */
+}
+
+.carousel-dots {
+    display: none; /* Escondido no desktop */
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.carousel-dots .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: var(--color-element);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+    background-color: var(--color-accent);
+}
+
+/* Responsivo para Blog Destaques */
+@media (max-width: 768px) { /* Mobile */
+    .blog-destaques-grid.blog-carousel {
+        display: flex;
+        overflow-x: auto; /* MUDANÇA TEMPORÁRIA PARA TESTE: de 'hidden' para 'auto' */
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        /* position: relative; /* Não estritamente necessário para esta abordagem */
+        /* padding-bottom: 1rem; /* Pode remover se overflow-x: auto mostrar scrollbar */
+        /* Clear any transform that might be set by JS if we are letting the browser handle scroll */
+        transform: translateX(0) !important; /* Reset para teste */
+    }
+
+    .blog-carousel .carousel-item {
+        flex: 0 0 90%; /* Cada item ocupa 90% da largura do container */
+        margin-right: 15px;
+        scroll-snap-align: start;
+        /* Adicionar visibilidade para garantir que não estejam escondidos por outra regra */
+        visibility: visible;
+        opacity: 1;
+    }
+    .blog-carousel .carousel-item:last-child {
+        margin-right: 0;
+    }
+
+    /* Mostrar controles do carrossel no mobile */
+    .carousel-controls,
+    .carousel-dots {
+        display: flex; /* .carousel-dots já é flex, mas reforça se for block */
+    }
+    .carousel-dots { /* Ajuste para centralizar os dots */
+        justify-content: center;
+    }
+
+    /* Ajustes internos do card de blog para mobile, se necessário */
+    .card--blog-post .card-image-placeholder,
+    .card--blog-post .card-image {
+        height: 180px;
+    }
+    .card--blog-post h3 {
+        font-size: 1.1em;
+    }
+    .card--blog-post .card-excerpt {
+        font-size: 0.85rem;
+    }
+}
+
+/* ---------------------------------- */
+/* SEÇÃO CTA FINAL COM LOCAIS         */
+/* ---------------------------------- */
+.cta-final-locais-section {
+    background-color: var(--color-bg); /* Fundo BEGE para esta seção, como no seu HTML */
+    /* .section-padding aplicado no HTML */
+}
+
+.cta-subtext {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    opacity: 0.9;
+    /* max-width e margins já estão inline no seu HTML, o que é OK para este caso específico */
+}
+
+.locais-atendimento-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 2rem; 
+    margin-top: 2rem; 
+}
+
+.card--local-atendimento {
+    /* Herda de .card (fundo bege var(--color-section) do components.css) */
+    /* Se quiser cards brancos sobre o fundo bege da seção: */
+    background-color: var(--color-bg); /* Cards BRANCOS */
+    padding: 2rem 1.75rem; 
+    text-align: center; /* Garante que os elementos inline/inline-block dentro sejam centralizados */
+    box-shadow: 0 6px 20px rgba(31, 47, 60, 0.1); 
+}
+
+.card--local-atendimento .local-nome { /* h3 */
+    font-size: clamp(1.3em, 2.8vw, 1.6em);
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.card--local-atendimento .local-endereco {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.card--local-atendimento .local-endereco i.fas.fa-map-marker-alt {
+    color: var(--color-accent);
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+/* O botão .btn--whatsapp usará os estilos do components.css.
+   A classe .btn já é display: inline-block e text-align: center,
+   e o .card--local-atendimento tem text-align: center.
+   Isso deve centralizar o botão.
+   Se você quiser um max-width nele: */
+.card--local-atendimento .btn--whatsapp {
+    /* Os estilos de cor e ícone vêm do components.css */
+    /* Se precisar de um max-width e garantir centralização: */
+    max-width: 290px; /* Exemplo de largura máxima */
+    width: 90%;       /* Ocupa a largura disponível até o max-width */
+    margin-left: auto;  /* Para centralizar se tiver max-width e for block/inline-block com largura efetiva */
+    margin-right: auto; /* Para centralizar */
+    margin-bottom: 0.75rem;
+    /* display: inline-flex; já está no components.css */
+}
+
+
+.card--local-atendimento .map-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block; /* Para ocupar a linha e ser centralizado pelo text-align do pai */
+    margin-top: 1rem;
+    color: var(--color-accent);
+}
+.card--local-atendimento .map-link:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para .locais-atendimento-grid */
+@media (min-width: 768px) {
+    .locais-atendimento-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .card--local-atendimento .btn--whatsapp {
+        width: auto; /* No desktop, o botão pode ter largura automática baseada no conteúdo */
+        padding-left: 2rem; /* Mais padding horizontal no desktop */
+        padding-right: 2rem;
+    }
+}
+
+/* ---------------------------------- */
+/* FOOTER (Minimalista e Inspirado)   */
+/* ---------------------------------- */
+.site-footer {
+    background-color: var(--color-text); /* Fundo escuro (azul/marrom #1F2F3C) */
+    color: rgba(255, 255, 255, 0.8); /* Texto branco com leve transparência para suavidade */
+    padding: 3.5rem 0 1.5rem; /* Mais padding em cima, menos embaixo antes do copyright */
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.site-footer a {
+    color: rgba(255, 255, 255, 0.85); /* Links um pouco mais opacos */
+}
+
+.site-footer a:hover {
+    color: var(--color-accent); /* Cor de destaque no hover */
+}
+
+.site-footer h4 {
+    font-family: var(--font-heading); /* Cormorant Garamond */
+    color: var(--color-bg); /* Títulos dos widgets do footer em branco mais sólido */
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-main-content {
+    display: grid;
+    /* Para desktop, 3 colunas: Logo | Contato | Info (CRM/CNPJ)
+       Se adicionar a navegação, pode ser repeat(4, 1fr) */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2.5rem; /* Espaço entre as colunas */
+    align-items: flex-start;
+    padding-bottom: 2.5rem; /* Espaço antes do footer-bottom */
+}
+
+.footer-column {
+    min-width: 200px; /* Para evitar que as colunas fiquem muito estreitas */
+}
+
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 0.5rem; /* Espaço abaixo do logo se tiver tagline */
+}
+
+.footer-logo-img {
+    height: 100px; /* Ajuste o tamanho do logo branco no rodapé */
+    width: auto;
+    /* Certifique-se que o SVG use fill="currentColor" ou seja branco */
+    /* Se precisar forçar a cor no SVG que não usa currentColor:
+       filter: brightness(0) invert(1); (transforma preto em branco)
+    */
+}
+
+.footer-tagline { /* Para o slogan opcional abaixo do logo */
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+.footer-contact p,
+.footer-info p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact i { /* Ícones de contato */
+    margin-right: 0.6em;
+    color: var(--color-accent); /* Ícones com a cor de destaque */
+    font-size: 1.05em;
+    width: 20px; /* Para alinhar o texto */
+    text-align: center;
+}
+
+.cnpj-footer {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.75rem;
+}
+
+/* Opcional: Estilos para a lista de navegação no rodapé */
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-nav li {
+    margin-bottom: 0.4rem;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem; /* Menor padding */
+    margin-top: 1.5rem;  /* Menor margem */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha separadora muito sutil */
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Footer Responsivo */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 2.5rem 0 1rem;
+    }
+    .footer-main-content {
+        grid-template-columns: 1fr; /* Uma coluna no mobile */
+        text-align: center; /* Centraliza o conteúdo de cada coluna */
+        gap: 2rem;
+        padding-bottom: 2rem;
+    }
+    .footer-logo-link {
+        margin: 0 auto 0.5rem auto; /* Centraliza o logo */
+    }
+    .footer-contact i {
+        margin-right: 0.4em; /* Ajuste para texto centralizado */
+    }
+    /* Para a navegação do rodapé no mobile, se existir */
+    .footer-nav ul {
+        /* Pode querer estilizar diferente no mobile */
+    }
+}
+
+/* ---------------------------------- */
+/* ESTILOS PÁGINA SOBRE (sobre.html)  */
+/* ---------------------------------- */
+
+/* Hero Específico da Página Sobre */
+.page-hero-sobre {
+    background-color: var(--color-section); /* Fundo bege claro, para diferenciar do hero da home */
+    /* .section-padding já está aplicado no HTML, ou ajuste o padding aqui: */
+    /* padding: 3rem 0; */
+    text-align: center;
+}
+
+.page-hero-sobre .page-title { /* h1 da página Sobre */
+    font-size: clamp(2.2em, 5vw, 3.2em); /* Tamanho grande e responsivo */
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    /* text-transform: uppercase; /* Opcional */
+    /* letter-spacing: 1px; /* Opcional */
+}
+/* Remover o ::after do .section-title se não quiser o sublinhado aqui, ou estilizar diferente */
+.page-hero-sobre .section-title::after {
+    display: none; /* Exemplo: sem sublinhado no hero da página Sobre */
+}
+
+
+.page-hero-sobre .page-subtitle { /* Parágrafo abaixo do h1 */
+    font-size: clamp(1em, 2.5vw, 1.2em);
+    color: var(--color-text);
+    opacity: 0.85;
+    max-width: 700px;
+    margin: 0 auto; /* Centraliza se for menor que o container */
+    font-family: var(--font-sans); /* Poppins para o subtítulo */
+    font-weight: 400;
+}
+
+/* Conteúdo Principal da Página Sobre */
+.sobre-conteudo-section {
+    background-color: var(--color-bg); /* Fundo branco para o conteúdo principal */
+    /* .section-padding aplicado no HTML */
+}
+
+.sobre-grid { /* Layout para imagem principal e texto */
+    display: grid;
+    grid-template-columns: 1fr; /* Padrão mobile: imagem acima do texto */
+    gap: 2.5rem; /* Espaço entre imagem e texto quando empilhados, ou entre colunas */
+    align-items: flex-start; /* Alinha no topo quando em colunas */
+}
+
+@media (min-width: 992px) { /* Desktop: imagem ao lado do texto */
+    .sobre-grid {
+        grid-template-columns: 1fr 2fr; /* Imagem (menor) | Texto (maior) */
+        /* Ou: grid-template-columns: 0.8fr 1.2fr; se quiser proporções diferentes */
+        gap: 3.5rem; /* Gap maior no desktop */
+    }
+}
+
+.sobre-imagem-principal img {
+    border-radius: var(--radius);
+    box-shadow: 0 8px 25px rgba(31, 47, 60, 0.12); /* Sombra mais pronunciada */
+    max-width: 450px; /* Limite para a imagem não ficar enorme */
+    margin: 0 auto; /* Centraliza a imagem no mobile ou se a coluna do grid for maior */
+}
+
+.sobre-texto-principal h2 { /* Subtítulos dentro da narrativa (Vocação, Formação, etc.) */
+    font-size: clamp(1.6em, 3.5vw, 2.2em);
+    color: var(--color-text); /* Garante cor */
+    margin-top: 2.5rem; /* Espaço acima de cada subtítulo, exceto o primeiro */
+    margin-bottom: 1rem;
+    text-align: left; /* Subtítulos alinhados à esquerda */
+}
+.sobre-texto-principal h2:first-of-type {
+    margin-top: 0; /* Remove margem do topo do primeiro h2 */
+}
+.sobre-texto-principal h2::after { /* Sublinhado para os h2 da página Sobre */
+    display: block;
+    content: '';
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: 0.5rem 0 0; /* Alinhado à esquerda, abaixo do título */
+}
+
+
+.sobre-texto-principal p {
+    font-size: 1rem; /* Tamanho de leitura confortável */
+    line-height: 1.75; /* Bom espaçamento entre linhas */
+    margin-bottom: 1.5rem;
+    color: var(--color-text); /* Garante a cor do texto */
+}
+
+.sobre-texto-principal strong { /* Para dar destaque a palavras-chave na narrativa */
+    font-weight: 600; /* Poppins SemiBold */
+    color: var(--color-text); /* Ou var(--color-accent) para destaque colorido */
+}
+
+/* Lista de Credenciais */
+.credenciais-lista {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--color-accent); /* Detalhe visual na lista */
+    padding-left: 1.5rem;
+}
+
+.credenciais-lista li {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+}
+
+.credenciais-lista strong {
+    font-weight: 500; /* Poppins Medium */
+}
+
+/* CTA no final da página Sobre */
+.sobre-texto-principal .text-center .btn--primary {
+    /* O .text-center e .btn--primary já devem cuidar do estilo e centralização.
+       Pode aumentar o margin-top se necessário. */
+    margin-top: 2rem; /* Espaço acima do botão CTA final da página */
+}
+
+/* Ajustes mobile específicos para o conteúdo da página Sobre */
+@media (max-width: 768px) {
+    .sobre-imagem-principal img {
+        max-width: 100%; /* Permite que a imagem ocupe mais da largura no mobile */
+        width: 300px; /* Mas com um limite */
+    }
+    .sobre-texto-principal h2 {
+        font-size: clamp(1.4em, 4vw, 1.8em);
+        text-align: center; /* Centraliza subtítulos no mobile */
+    }
+    .sobre-texto-principal h2::after {
+        margin-left: auto; /* Centraliza sublinhado no mobile */
+        margin-right: auto;
+    }
+    .sobre-texto-principal p {
+        font-size: 0.95rem;
+        text-align: justify; /* Opcional: texto justificado no mobile para blocos longos */
+    }
+    .credenciais-lista {
+        padding-left: 1rem;
+        border-left-width: 2px;
+    }
+    .credenciais-lista li {
+        font-size: 0.9rem;
+    }
+}
+
+/* ------------------------------------------------- */
+/* ESTILOS PÁGINA CONTATO (contato.html)             */
+/* ------------------------------------------------- */
+
+/* Hero Específico da Página Contato */
+.page-hero-contato {
+    background-color: var(--color-section); /* Fundo bege claro */
+    /* .section-padding já está aplicado no HTML (padding: 4rem 0;)
+       Se quiser um padding diferente para este hero específico:
+       padding: 3rem 0; 
+    */
+    text-align: center;
+}
+
+.page-hero-contato .page-title { /* h1 da página Contato */
+    font-size: clamp(2.2em, 5vw, 3.2em);
+    color: var(--color-text);
+    margin-bottom: 0.75rem; 
+}
+/* Remover o ::after do .section-title se não quiser o sublinhado aqui */
+.page-hero-contato .section-title::after { /* Ou .page-hero-contato .page-title::after */
+    display: none;
+}
+
+.page-hero-contato .page-subtitle { /* Parágrafo abaixo do h1 */
+    font-size: clamp(1em, 2.5vw, 1.15em);
+    color: var(--color-text);
+    opacity: 0.9;
+    max-width: 750px; 
+    margin: 0 auto 1rem auto; 
+    font-family: var(--font-sans);
+    font-weight: 400;
+}
+
+/* Seção de Locais de Atendimento na Página de Contato */
+.locais-atendimento-contato-section {
+    background-color: var(--color-bg); /* Fundo branco para esta seção */
+    /* .section-padding aplicado no HTML */
+}
+
+/* Os estilos para .locais-atendimento-grid e .card--local-atendimento
+   já foram definidos quando criamos a seção CTA Final na index.html.
+   Eles devem ser reutilizados aqui. Certifique-se de que essas classes
+   estão no seu components.css ou styles.css e são aplicadas corretamente
+   no HTML da contato.html.
+
+   Relembrando/Confirmando os estilos (eles podem estar no components.css):
+*/
+.locais-atendimento-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Padrão Mobile */
+    gap: 2rem; 
+    margin-top: 2rem; /* Espaço após o título/subtítulo da página se houver */
+}
+
+.card--local-atendimento { /* Variação de .card */
+    background-color: var(--color-section); /* Card Bege sobre seção branca */
+    /* Se preferir Card Branco sobre seção Bege, inverta os backgrounds
+       de .locais-atendimento-contato-section e .card--local-atendimento */
+    padding: 2rem 1.75rem; 
+    text-align: center; 
+    box-shadow: 0 6px 20px rgba(31, 47, 60, 0.1); 
+    border-radius: var(--radius);
+}
+
+.card--local-atendimento .local-nome { /* h3 */
+    font-size: clamp(1.3em, 2.8vw, 1.6em);
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.card--local-atendimento .local-endereco {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.card--local-atendimento .local-endereco i.fas.fa-map-marker-alt {
+    color: var(--color-accent);
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+/* Estilo para .btn--whatsapp (deve estar no components.css) */
+/* .btn--whatsapp { ... } */
+/* Ajustes para o .btn--whatsapp dentro do card, se necessário */
+.card--local-atendimento .btn--whatsapp {
+    max-width: 290px; 
+    width: 90%;       
+    margin-left: auto;  
+    margin-right: auto; 
+    margin-bottom: 0.75rem; /* Espaço antes do link do mapa */
+}
+
+.card--local-atendimento .map-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block; 
+    margin-top: 1rem;
+    color: var(--color-accent);
+}
+.card--local-atendimento .map-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Wrapper para o Formulário de Contato */
+.formulario-contato-wrapper {
+    margin-top: 3.5rem; /* Mais espaço antes do formulário */
+    padding-top: 3.5rem;
+    border-top: 1px solid var(--color-element);
+}
+
+.formulario-contato-wrapper h3 { /* Título "Ou envie uma mensagem" */
+    font-size: clamp(1.5em, 3vw, 1.9em); /* Um pouco maior */
+    text-align: center;
+    margin-bottom: 2.5rem; /* Mais espaço */
+}
+
+/* Estilos básicos para o formulário (podem ir para components.css depois) */
+.form-group {
+    margin-bottom: 1.75rem; /* Mais espaço entre os campos */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem; /* Mais espaço abaixo do label */
+    font-weight: 500; 
+    font-size: 0.95rem; /* Label um pouco maior */
+    color: var(--color-text);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem; /* Padding interno dos campos aumentado */
+    border: 1px solid var(--color-element);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: 1rem; /* Texto dentro do campo um pouco maior */
+    box-sizing: border-box; 
+    background-color: var(--color-bg); /* Garante fundo branco */
+    color: var(--color-text); /* Garante cor do texto */
+}
+.form-group input[type="text"]::placeholder,
+.form-group input[type="email"]::placeholder,
+.form-group input[type="tel"]::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(31, 47, 60, 0.5); /* Cor do placeholder mais suave */
+}
+
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(154, 183, 161, 0.3); /* Sombra de foco um pouco mais pronunciada */
+}
+
+.form-group textarea {
+    resize: vertical; 
+    min-height: 130px; /* Altura mínima do textarea */
+}
+
+.formulario-contato-wrapper .btn--primary { /* Botão de Enviar do formulário */
+    display: block; 
+    width: auto; 
+    min-width: 220px; /* Largura mínima maior */
+    margin: 1.5rem auto 0; 
+    padding-top: 0.85rem; /* Botão um pouco mais alto */
+    padding-bottom: 0.85rem;
+}
+
+
+/* Informações Gerais de Contato (no final da página) */
+.contato-geral-info {
+    margin-top: 3.5rem; /* Mais espaço */
+    padding-top: 3.5rem;
+    border-top: 1px solid var(--color-element);
+    text-align: center; /* Centralizar este bloco */
+}
+
+.contato-geral-info h4 {
+    font-size: clamp(1.2em, 2.5vw, 1.6em); /* Título um pouco maior */
+    font-family: var(--font-heading);
+    color: var(--color-text); /* Cor do texto padrão */
+    margin-bottom: 1.25rem;
+}
+/* Remover o ::after do h4 aqui, se ele herdar de .section-title */
+.contato-geral-info h4::after {
+    display: none;
+}
+
+.contato-geral-info p {
+    font-size: 1rem; /* Texto um pouco maior */
+    line-height: 1.7;
+    margin-bottom: 0.6rem;
+}
+
+/* Media Queries para a página de contato */
+@media (min-width: 768px) { /* Tablet e acima */
+    .locais-atendimento-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas para os locais */
+    }
+    .card--local-atendimento .btn--whatsapp { /* Botão de whats no card de local */
+        width: auto; /* Largura automática no tablet/desktop */
+        max-width: none;
+        padding-left: 1.75rem; 
+        padding-right: 1.75rem;
+    }
+     .formulario-contato-wrapper form { /* Limitar largura do formulário no desktop */
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767px) { /* Mobile */
+    .page-hero-contato {
+        /* .section-padding já ajusta para 3rem 0 */
+    }
+     .page-hero-contato .page-title {
+        font-size: clamp(1.9em, 6vw, 2.6em); /* Título um pouco maior no mobile */
+    }
+    .page-hero-contato .page-subtitle {
+        font-size: clamp(0.95em, 3.2vw, 1.1em); /* Subtítulo um pouco maior no mobile */
+    }
+
+    .formulario-contato-wrapper h3 {
+        font-size: clamp(1.4em, 3.8vw, 1.7em);
+        margin-bottom: 2rem;
+    }
+}
+
+/* ------------------------------------------------- */
+/* ESTILOS PÁGINA HUB DE SERVIÇOS (servicos/index.html) */
+/* ------------------------------------------------- */
+
+.page-hero-servicos {
+    background-color: var(--color-section); /* Fundo bege claro */
+    text-align: center;
+    /* .section-padding é aplicado no HTML (padding: 4rem 0;) */
+}
+
+.page-hero-servicos .page-title { /* h1 */
+    font-size: clamp(2.2em, 5vw, 3.2em);
+    color: var(--color-text);
+    margin-bottom: 0.75rem; 
+}
+
+.page-hero-servicos .page-title::after { /* Remove sublinhado do page-title se herdar de .section-title */
+    display: none;
+}
+
+.page-hero-servicos .page-subtitle { /* Parágrafo abaixo do h1 */
+    font-size: clamp(1em, 2.5vw, 1.15em);
+    color: var(--color-text);
+    opacity: 0.9;
+    max-width: 800px; /* Aumentar um pouco a largura máxima */
+    margin: 0 auto 1rem auto; 
+    font-family: var(--font-sans);
+    font-weight: 400;
+}
+
+.tratamentos-hub-section {
+    background-color: var(--color-bg); /* Fundo branco para a seção da grade */
+    /* .section-padding é aplicado no HTML */
+}
+
+.tratamentos-hub-section .section-title { /* "Explore Nossos Cuidados" */
+    margin-bottom: 3rem; /* Mais espaço abaixo do título da seção */
+}
+
+.tratamentos-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Espaçamento entre os cards */
+}
+
+.card--tratamento-hub {
+    /* Herda de .card (fundo bege var(--color-section), radius, shadow base, display flex, flex-direction column, height 100%) */
+    /* Se .card já tem fundo bege (var(--color-section)), e a .tratamentos-hub-section é var(--color-bg) (branca), está bom. */
+    padding: 0; /* Remove padding base do .card para a imagem colar nas bordas superiores */
+    text-align: left; /* Conteúdo do card alinhado à esquerda */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card--tratamento-hub:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(31, 47, 60, 0.12); /* Sombra um pouco mais destacada no hover */
+}
+
+.card--tratamento-hub .card-image-container { /* Adicionado para manter proporção da imagem se necessário */
+    width: 100%;
+    padding-top: 66.66%; /* Proporção 3:2 (200px / 300px) - Ajuste conforme design das imagens */
+    /* Ou altura fixa: height: 200px; */
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background-color: var(--color-element); /* Placeholder enquanto a imagem carrega */
+}
+
+.card--tratamento-hub .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o container */
+}
+
+.card--tratamento-hub .card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para o link "Saiba Mais" ficar na base */
+}
+
+.card--tratamento-hub h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.2em, 2.2vw, 1.4em); /* Tamanho do título do card */
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.card--tratamento-hub p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+    flex-grow: 1; /* Empurra o link para baixo */
+}
+
+.card--tratamento-hub .btn-link-card {
+    /* Estilo já definido no .card--blog-post, será reutilizado.
+       Se precisar de ajustes específicos, adicione aqui. */
+    color: var(--color-accent);
+    font-weight: 600; /* Um pouco mais de destaque */
+    text-decoration: none;
+    display: inline-block;
+    margin-top: auto; /* Alinha na base do card-content */
+}
+
+.card--tratamento-hub .btn-link-card:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes responsivos para a grade de tratamentos, se necessário */
+@media (max-width: 768px) {
+    .tratamentos-hub-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cards um pouco menores no mobile */
+        gap: 1.5rem;
+    }
+    .page-hero-servicos .page-title {
+        font-size: clamp(1.9em, 6vw, 2.6em);
+    }
+    .page-hero-servicos .page-subtitle {
+        font-size: clamp(0.95em, 3.2vw, 1.1em);
+    }
+    .card--tratamento-hub h3 {
+        font-size: 1.15em;
+    }
+     .card--tratamento-hub p {
+        font-size: 0.85rem;
+    }
+}

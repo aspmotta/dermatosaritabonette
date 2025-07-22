@@ -1,1 +1,224 @@
+/* ------------------------------------------------------
+   components.css | Componentes Reutilizáveis
+   Projeto Dra. Sarita Bonette
+------------------------------------------------------ */
 
+/* ---------------------------------- */
+/* BOTÕES                             */
+/* ---------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-weight: 500; /* Poppins Medium */
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+  background-color: #819c89; /* Tom mais escuro do accent */
+  border-color: #819c89;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Outras variações de botões podem ser adicionadas aqui (ex: .btn--secondary) */
+
+
+/* ---------------------------------- */
+/* CARDS (ESTILO BASE)                */
+/* ---------------------------------- */
+.card {
+  background: var(--color-section); /* FUNDO BEGE (#F7F4F1) para os cards */
+  border-radius: var(--radius);
+  padding: 1.5rem; /* Padding base do card */
+  text-align: center; /* Alinhamento de texto padrão para o card */
+  box-shadow: 0 4px 12px rgba(31, 47, 60, 0.08); /* Sombra padrão, usando --color-text com baixa opacidade */
+  color: var(--color-text); /* Cor de texto padrão para o conteúdo do card */
+  display: flex; /* Para permitir flex-direction: column e flex-grow nos filhos */
+  flex-direction: column;
+  height: 100%; /* Faz com que os cards em um grid tenham a mesma altura se o grid alinhar por stretch */
+}
+
+/* Wrapper para tornar cards inteiros clicáveis */
+a.card-link-wrapper,
+a.card-link-wrapper:hover {
+    text-decoration: none;
+    color: inherit; /* Herda a cor do texto do card */
+    display: block; /* Para o link ocupar o espaço do card */
+    height: 100%; /* Para o link ocupar toda a altura do card no grid */
+}
+
+a.card-link-wrapper:focus-visible .card { /* Estilo de foco para o card dentro do link */
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    /* Mantém a sombra do hover para consistência no foco */
+    box-shadow: 0 8px 20px rgba(31, 47, 60, 0.12);
+}
+
+
+/* ---------------------------------- */
+/* CARD VARIAÇÃO: DIFERENCIAL         */
+/* ---------------------------------- */
+.card--diferencial {
+  /* Herda estilos de .card (fundo bege, radius, shadow, padding base) */
+  align-items: center; /* Centraliza o ícone e o texto horizontalmente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card--diferencial:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(31, 47, 60, 0.12);
+}
+
+.card--diferencial .card-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent); /* Cor para SVGs que usam currentColor */
+}
+/* Se usar .card-icon-placeholder, o estilo dele pode vir aqui também */
+.card--diferencial .card-icon-placeholder {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-element);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+
+.card--diferencial h3 {
+  font-size: clamp(1.2em, 2.5vw, 1.4em);
+  font-family: var(--font-heading); /* Garante a fonte correta */
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.card--diferencial p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  flex-grow: 1; /* Ajuda a alinhar botões/links na base se houver */
+}
+
+
+/* ---------------------------------- */
+/* CARD VARIAÇÃO: TRATAMENTO          */
+/* ---------------------------------- */
+.card--tratamento {
+  /* Herda estilos de .card (fundo bege, radius, shadow) */
+  padding: 0; /* Remove o padding base do .card, pois .card-content terá o seu */
+  overflow: hidden; /* Para o border-radius da imagem funcionar bem com o card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card--tratamento:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(31, 47, 60, 0.15); /* Sombra um pouco mais pronunciada */
+}
+
+/* Estilos para o conteúdo INTERNO de .card--tratamento (imagem, h3, p, botão)
+   serão definidos no styles.css, pois podem variar mais com o contexto da seção.
+   Alternativamente, se forem muito padronizados, podem vir aqui.
+   Por enquanto, o styles.css já contém:
+   .card--tratamento .card-image-placeholder, .card--tratamento .card-image
+   .card--tratamento .card-content
+   .card--tratamento h3 (dentro de .card-content)
+   .card--tratamento p (dentro de .card-content)
+   .btn--card-cta (dentro de .card-content)
+*/
+
+
+/* ---------------------------------- */
+/* WHATSAPP FLOAT ICON                */
+/* ---------------------------------- */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 65px; /* Você aumentou */
+    height: 65px;/* Você aumentou */
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: #FFF; /* Cor do ícone Font Awesome */
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px; /* Você aumentou, para o ícone Font Awesome */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1); /* Descomente se quiser a pulsação */
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.07); /* Efeito de hover mais sutil que você gostou */
+    text-decoration: none;
+    color: #FFF;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.35);
+}
+
+.btn--whatsapp {
+  /* Herda muitos estilos de .btn e .btn--primary se aplicado junto,
+     mas vamos definir explicitamente para clareza e para o caso de ser usado sozinho. */
+  display: inline-flex; /* Para alinhar ícone e texto, e permitir centralização */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Espaço entre ícone e texto */
+  
+  background-color: #25D366; /* Cor verde do WhatsApp */
+  border-color: #25D366;
+  color: #fff; /* Texto branco */
+  
+  padding: 0.75rem 1.5rem; /* Padding similar ao .btn */
+  font-size: 0.95rem;    /* Tamanho de fonte similar ao .btn */
+  font-weight: 500;      /* Peso similar ao .btn */
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  /* Para centralizar o botão quando ele tem max-width: */
+  /* Se o card pai tiver text-align: center, e o botão for inline-flex, ele já deve centralizar.
+     Se não, e ele tiver max-width, precisaremos de um wrapper ou ajustar a lógica.
+     Vamos assumir que o text-align: center do .card--local-atendimento cuidará disso
+     já que .btn (e .btn--whatsapp) é display: inline-flex (ou inline-block).
+  */
+}
+
+.btn--whatsapp:hover {
+  background-color: #1DA851; /* Verde mais escuro do WhatsApp */
+  border-color: #1DA851;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn--whatsapp i.fab.fa-whatsapp { /* Estilo específico para o ícone dentro do botão */
+  font-size: 1.2em; /* Torna o ícone um pouco maior em relação ao texto do botão */
+  /* margin-right: 0.5rem; /* Redundante se usar gap no .btn--whatsapp */
+}
