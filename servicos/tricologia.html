@@ -10,11 +10,41 @@
     <meta name="author" content="Dra. Sarita Bonette">
     <link rel="icon" href="../assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <!-- O mesmo header de toxina-botulinica.html será inserido aqui -->
+    <header class="site-header">
+        <div class="container flex-between">
+            <div class="logo">
+                <a href="../index.html" title="Página Inicial Dra. Sarita Bonette">
+                    <img src="../assets/icons/Logo Sarita Bonette.svg" alt="Logo Dra. Sarita Bonette Dermatologista" width="115" height="80" style="width: 115px; height: 80px;">
+                </a>
+            </div>
+            <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Início</a></li>
+                    <li><a href="../sobre.html" class="nav-link">Dra. Sarita</a></li>
+                    <li><a href="index.html" class="nav-link active">Tratamentos</a></li>
+                    <li><a href="../tecnologias.html" class="nav-link">Tecnologias</a></li>
+                    <li><a href="../blog/index.html" class="nav-link">Blog</a></li>
+                    <li><a href="../contato.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="../contato.html" class="btn btn--primary">Agendar Consulta</a>
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mainNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
     </header>
     <main>
         <section class="hero">
@@ -57,8 +87,53 @@
             </div>
         </section>
     </main>
-    <footer>
-        <!-- O mesmo footer de toxina-botulinica.html será inserido aqui -->
+    <footer class="site-footer">
+      <div class="container footer-main-content">
+        <div class="footer-column footer-brand">
+          <a href="../index.html" class="footer-logo-link" title="Página Inicial Dra. Sarita Bonette">
+            <img src="../assets/icons/Logo-Sarita-Bonette-Branca.svg"
+                 alt="Logo Dra. Sarita Bonette Dermatologista"
+                 class="footer-logo-img">
+          </a>
+        </div>
+        <address class="footer-column footer-contact">
+          <p class="footer-heading">Contato</p>
+          <p>
+            <a class="footer-contact-link"
+               href="mailto:contato@dermatosaritabonette.com.br">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              e-mail
+            </a>
+          </p>
+          <p>
+            <a href="https://www.instagram.com/saritabonette"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Perfil da Dra. Sarita Bonette no Instagram">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+              @saritabonette
+            </a>
+          </p>
+          <p>
+            <a href="tel:+5521982850393" class="footer-contact-link">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              (21) 98285-0393
+            </a>
+          </p>
+        </address>
+        <div class="footer-column footer-info">
+          <p class="footer-heading">Dra. Sarita Bonette</p>
+          <p>Dermatologia</p>
+          <p>CRM-RJ 52-113558-9</p>
+          <p class="cnpj-footer">CNPJ 57.171.135/0001-37</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; <span id="currentYear"></span>
+             Dra. Sarita Bonette Dermatologia. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
     </footer>
     <script src="../assets/js/main.js"></script>
 </body>
