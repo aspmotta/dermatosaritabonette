@@ -4,12 +4,7 @@ const path = require('path');
 
 const assetsDir = path.join(__dirname, 'assets', 'images');
 const imagesToResize = [
-  'pele-renovada.webp',
-  'firmeza-contorno.webp',
-  'expressao-suave-e-natural.webp',
-  'sinais-lesoes.webp',
-  'sarita-sobre-mim-800w.webp',
-  'saude-capilar-800w.webp',
+  'manchas-melasma-800w.webp',
 ];
 
 const sizes = [420, 640];
