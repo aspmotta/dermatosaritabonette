@@ -34,15 +34,13 @@ Para garantir a consistência, performance e profissionalismo do site, todas as 
   - **Dimensionamento:** Utilizar o atributo `srcset` para servir imagens de tamanhos diferentes para resoluções de tela distintas, melhorando o tempo de carregamento.
   - **Nomenclatura:** Os nomes dos arquivos devem ser descritivos e usar hífens (ex: `dra-sarita-consultorio-leblon.webp`).
 
-## 3. Detalhamento das Próximas Tarefas (Priorizadas)
+## 3. Roadmap de Sprints e Product Backlog Items (PBIs)
 
-As tarefas abaixo foram extraídas do `_PROJECT/ROADMAP.md` e `_PROJECT/BACKLOG.md` e estão organizadas por prioridade.
+As tarefas foram reorganizadas para priorizar a geração de conteúdo, conforme solicitado. A otimização de imagens será realizada após a criação e o upload das imagens finais.
 
-- **1. [T1 - Prioridade Alta] Otimização de Todas as Imagens:**
-  - **Descrição:** Auditar todas as imagens presentes na pasta `/assets/images/`. Comprimir e converter cada uma para o formato WebP, garantindo que os fallbacks estejam corretamente implementados no HTML.
-  - **Critérios de Aceitação:** Todas as imagens do site são servidas em WebP (quando suportado) e estão otimizadas. Os diretórios `optimized_images*` devem ser consolidados ou removidos após a conclusão.
+### Sprint 1: Geração de Conteúdo Essencial
 
-- **2. [T2 - Prioridade Média] Preenchimento das Páginas de Serviços:**
+- **PBI-01: Preenchimento das Páginas de Serviços**
   - **Descrição:** Desenvolver o conteúdo textual e visual para cada página de tratamento listada em `/servicos/index.html`.
   - **Páginas a serem criadas/editadas:**
     - `bioestimuladores-preenchimentos.html`
@@ -56,14 +54,22 @@ As tarefas abaixo foram extraídas do `_PROJECT/ROADMAP.md` e `_PROJECT/BACKLOG.
     - `tricologia.html`
   - **Critérios de Aceitação:** Todas as páginas de serviço estão com conteúdo final e seguem o padrão de qualidade.
 
-- **3. [T3 - Prioridade Média] Enriquecimento da Página `sobre.html`:**
+- **PBI-02: Enriquecimento da Página `sobre.html`**
   - **Descrição:** Expandir o conteúdo da página `sobre.html`, adicionando mais detalhes sobre a filosofia de trabalho, formação e a trajetória profissional da Dra. Sarita Bonette.
   - **Critérios de Aceitação:** A página `sobre.html` oferece uma visão completa e aprofundada sobre a profissional.
 
-- **4. [T4 - Prioridade Baixa] Estruturação Completa do Blog:**
+### Sprint 2: Expansão de Conteúdo e Autoridade
+
+- **PBI-03: Estruturação Completa do Blog**
   - **Descrição:** Desenvolver a página de listagem de artigos (`/blog/index.html`) e criar o template para os artigos individuais. Publicar os 3-5 primeiros artigos.
   - **Critérios de Aceitação:** A seção do blog está funcional, e os artigos iniciais estão publicados.
 
-- **5. [T5 - Prioridade Baixa] Desenvolvimento da Seção "Condições Tratadas":**
+- **PBI-04: Desenvolvimento da Seção "Condições Tratadas"**
   - **Descrição:** Criar a estrutura e as páginas para a seção `/condicoes`, que detalhará as diversas condições dermatológicas tratadas.
   - **Critérios de Aceitação:** A seção `/condicoes` está no ar, com conteúdo inicial para as principais condições.
+
+### Backlog (Pós-Sprints Iniciais)
+
+- **PBI-05: Otimização de Todas as Imagens**
+  - **Descrição:** Auditar todas as imagens presentes na pasta `/assets/images/` (incluindo as novas imagens de conteúdo). Comprimir e converter cada uma para o formato WebP, garantindo que os fallbacks estejam corretamente implementados no HTML.
+  - **Critérios de Aceitação:** Todas as imagens do site são servidas em WebP (quando suportado) e estão otimizadas. Os diretórios `optimized_images*` devem ser consolidados ou removidos após a conclusão.
