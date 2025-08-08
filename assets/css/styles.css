@@ -1118,8 +1118,8 @@ img {
     font-size: 1.1em;
 }
 
-/* Seção de Call to Action no final das páginas */
-.cta-section {
+/* Seção de Call to Action no final da página */
+.servico-content-section .cta-section {
     margin-top: 3.5rem;
     padding: 2.5rem;
     border-top: 2px solid var(--color-element);
@@ -1128,13 +1128,13 @@ img {
     text-align: center;
 }
 
-.cta-section h3 {
+.servico-content-section .cta-section h3 {
     font-size: clamp(1.4em, 3vw, 1.8em);
     margin-bottom: 1rem;
     color: var(--color-text);
 }
 
-.cta-section p {
+.servico-content-section .cta-section p {
     font-size: 1rem;
     max-width: 600px;
     margin-left: auto;
@@ -1144,7 +1144,7 @@ img {
     opacity: 0.9;
 }
 
-.cta-section .btn--primary {
+.servico-content-section .cta-section .btn--primary {
     padding: 0.85rem 2rem; /* Botão um pouco maior */
     font-size: 1rem;
 }
@@ -1166,29 +1166,14 @@ img {
     opacity: 0.8;
 }
 
-/* ==========================================================================
-   ESTILOS DA PÁGINA DE ARTIGO DO BLOG
-   ========================================================================== */
-
 /* ------------------------------------------------- */
-/* Seção Hero (Título e Metadados)
+/* ESTILOS PÁGINA DE ARTIGO DO BLOG                  */
 /* ------------------------------------------------- */
-
 .page-hero-artigo {
     background-color: var(--color-section);
-    padding-block: 3rem; /* Usar 'padding-block' é mais moderno que 'padding-top/bottom' */
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
-
-.page-hero-artigo .page-title {
-    font-size: clamp(2em, 5vw, 3em);
-    margin-bottom: 0.25rem; /* Adicionado para um leve respiro até os metadados */
-}
-
-/* Remove a linha decorativa padrão dos títulos de página, se houver */
-.page-hero-artigo .page-title::after {
-    display: none;
-}
-
 .artigo-meta {
     font-family: var(--font-sans);
     font-size: 0.9rem;
@@ -1196,78 +1181,58 @@ img {
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
 }
-
-/* ------------------------------------------------- */
-/* Conteúdo do Artigo
-/* ------------------------------------------------- */
-
+.page-hero-artigo .page-title {
+    font-size: clamp(2em, 5vw, 3em);
+}
+.page-hero-artigo .page-title::after {
+    display: none;
+}
 .img-artigo-destaque {
-    /* O 'margin-block-start' negativo puxa a imagem para cima, sobrepondo a seção hero */
-    margin-block-start: -5rem;
-    margin-block-end: 3rem;
-    position: relative; /* Necessário para o z-index funcionar */
+    margin-top: -5rem; /* Efeito de sobreposição com o hero */
+    margin-bottom: 3rem;
+    position: relative;
     z-index: 10;
 }
-
 .img-artigo-destaque img {
     width: 100%;
     height: auto;
     max-height: 500px;
-    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    object-fit: cover;
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(31, 47, 60, 0.15);
 }
-
-/* Compensa o espaço da imagem sobreposta */
 .artigo-conteudo-section {
-    padding-top: 0;
+    padding-top: 0; /* Remove padding do topo para compensar a margem da imagem */
 }
-
 .artigo-body h2 {
     font-size: clamp(1.5em, 3vw, 2em);
-    margin-block: 2.5rem 1rem; /* Espaçamento vertical (topo e base) */
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
 }
-
-/* Estilo base para parágrafos e itens de lista para manter consistência */
-.artigo-body p,
-.artigo-body li {
+.artigo-body p, .artigo-body li {
     line-height: 1.8;
-    max-width: 75ch; /* Melhora a legibilidade limitando a largura da linha */
+    margin-bottom: 1.25rem;
 }
-
-/* Regra de espaçamento para elementos que seguem um ao outro */
-.artigo-body p + p,
-.artigo-body p + ul,
-.artigo-body ul + p {
-    margin-block-start: 1.25rem;
-}
-
-/* --- Listas Customizadas com Flexbox --- */
-
 .artigo-body ul {
-    list-style: none; /* Remove os bullets padrão */
-    padding-inline-start: 0; /* Remove o padding padrão da lista */
-    margin-block-end: 1.25rem; /* Adiciona espaço após o fim da lista */
+    padding-left: 0;
+    margin-bottom: 1.25rem;
 }
-
-.artigo-body li {
-    display: flex;
-    gap: 0.75rem; /* Espaço entre o bullet e o texto */
+.artigo-body ul li {
+    position: relative;
+    padding-left: 2rem;
     margin-bottom: 0.8rem;
+    list-style-type: none;
 }
-
-/* Remove a margem do último item da lista para evitar espaçamento duplo */
-.artigo-body li:last-child {
-    margin-bottom: 0;
-}
-
-.artigo-body li::before {
-    content: '\2022'; /* Caractere de bullet (•) */
+.artigo-body ul li::before {
+    content: '\2022';
     color: var(--color-accent);
     font-weight: bold;
-    /* Alinha o bullet com a primeira linha do texto, mesmo que o texto tenha várias linhas */
-    line-height: 1.8;
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 /* ---------------------------------- */
