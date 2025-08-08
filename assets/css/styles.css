@@ -1216,13 +1216,14 @@ img {
     margin-bottom: 1.25rem;
 }
 .artigo-body ul {
-    list-style: none;
     padding-left: 0;
+    margin-bottom: 1.25rem;
 }
 .artigo-body ul li {
     position: relative;
     padding-left: 2rem;
     margin-bottom: 0.8rem;
+    list-style-type: none;
 }
 .artigo-body ul li::before {
     content: '\\2022';
