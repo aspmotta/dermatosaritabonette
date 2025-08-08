@@ -1149,6 +1149,23 @@ img {
     font-size: 1rem;
 }
 
+.img-servico-destaque {
+    margin: 2rem 0 3rem;
+    width: 100%;
+}
+.img-servico-destaque img {
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px rgba(31, 47, 60, 0.1);
+    width: 100%; /* Garante que a imagem ocupe o espaço do figure */
+}
+.img-servico-destaque figcaption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+
 /* ---------------------------------- */
 /* SEÇÃO CTA FINAL COM LOCAIS         */
 /* ---------------------------------- */
