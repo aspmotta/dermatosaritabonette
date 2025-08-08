@@ -1149,6 +1149,85 @@ img {
     font-size: 1rem;
 }
 
+.img-servico-destaque {
+    margin: 2rem 0 3rem;
+    width: 100%;
+}
+.img-servico-destaque img {
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px rgba(31, 47, 60, 0.1);
+    width: 100%; /* Garante que a imagem ocupe o espaço do figure */
+}
+.img-servico-destaque figcaption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+
+/* ------------------------------------------------- */
+/* ESTILOS PÁGINA DE ARTIGO DO BLOG                  */
+/* ------------------------------------------------- */
+.page-hero-artigo {
+    background-color: var(--color-section);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.artigo-meta {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+.page-hero-artigo .page-title {
+    font-size: clamp(2em, 5vw, 3em);
+}
+.page-hero-artigo .page-title::after {
+    display: none;
+}
+.img-artigo-destaque {
+    margin-top: -5rem; /* Efeito de sobreposição com o hero */
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+}
+.img-artigo-destaque img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(31, 47, 60, 0.15);
+}
+.artigo-conteudo-section {
+    padding-top: 0; /* Remove padding do topo para compensar a margem da imagem */
+}
+.artigo-body h2 {
+    font-size: clamp(1.5em, 3vw, 2em);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+.artigo-body p, .artigo-body li {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+.artigo-body ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+.artigo-body ul li::before {
+    content: '\\2022'; /* Bullet point redondo */
+    color: var(--color-accent);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
 /* ---------------------------------- */
 /* SEÇÃO CTA FINAL COM LOCAIS         */
 /* ---------------------------------- */
