@@ -1166,14 +1166,29 @@ img {
     opacity: 0.8;
 }
 
+/* ==========================================================================
+   ESTILOS DA PÁGINA DE ARTIGO DO BLOG
+   ========================================================================== */
+
 /* ------------------------------------------------- */
-/* ESTILOS PÁGINA DE ARTIGO DO BLOG                  */
+/* Seção Hero (Título e Metadados)
 /* ------------------------------------------------- */
+
 .page-hero-artigo {
     background-color: var(--color-section);
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-block: 3rem; /* Usar 'padding-block' é mais moderno que 'padding-top/bottom' */
 }
+
+.page-hero-artigo .page-title {
+    font-size: clamp(2em, 5vw, 3em);
+    margin-bottom: 0.25rem; /* Adicionado para um leve respiro até os metadados */
+}
+
+/* Remove a linha decorativa padrão dos títulos de página, se houver */
+.page-hero-artigo .page-title::after {
+    display: none;
+}
+
 .artigo-meta {
     font-family: var(--font-sans);
     font-size: 0.9rem;
@@ -1181,56 +1196,78 @@ img {
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 0.5rem;
 }
-.page-hero-artigo .page-title {
-    font-size: clamp(2em, 5vw, 3em);
-}
-.page-hero-artigo .page-title::after {
-    display: none;
-}
+
+/* ------------------------------------------------- */
+/* Conteúdo do Artigo
+/* ------------------------------------------------- */
+
 .img-artigo-destaque {
-    margin-top: -5rem; /* Efeito de sobreposição com o hero */
-    margin-bottom: 3rem;
-    position: relative;
+    /* O 'margin-block-start' negativo puxa a imagem para cima, sobrepondo a seção hero */
+    margin-block-start: -5rem;
+    margin-block-end: 3rem;
+    position: relative; /* Necessário para o z-index funcionar */
     z-index: 10;
 }
+
 .img-artigo-destaque img {
     width: 100%;
     height: auto;
     max-height: 500px;
-    object-fit: cover;
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(31, 47, 60, 0.15);
 }
+
+/* Compensa o espaço da imagem sobreposta */
 .artigo-conteudo-section {
-    padding-top: 0; /* Remove padding do topo para compensar a margem da imagem */
+    padding-top: 0;
 }
+
 .artigo-body h2 {
     font-size: clamp(1.5em, 3vw, 2em);
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    margin-block: 2.5rem 1rem; /* Espaçamento vertical (topo e base) */
 }
-.artigo-body p, .artigo-body li {
+
+/* Estilo base para parágrafos e itens de lista para manter consistência */
+.artigo-body p,
+.artigo-body li {
     line-height: 1.8;
-    margin-bottom: 1.25rem;
+    max-width: 75ch; /* Melhora a legibilidade limitando a largura da linha */
 }
+
+/* Regra de espaçamento para elementos que seguem um ao outro */
+.artigo-body p + p,
+.artigo-body p + ul,
+.artigo-body ul + p {
+    margin-block-start: 1.25rem;
+}
+
+/* --- Listas Customizadas com Flexbox --- */
+
 .artigo-body ul {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* Remove os bullets padrão */
+    padding-inline-start: 0; /* Remove o padding padrão da lista */
+    margin-block-end: 1.25rem; /* Adiciona espaço após o fim da lista */
 }
-.artigo-body ul li {
+
+.artigo-body li {
     display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.75rem; /* Espaço entre o bullet e o texto */
     margin-bottom: 0.8rem;
 }
-.artigo-body ul li::before {
-    content: '\2022';
+
+/* Remove a margem do último item da lista para evitar espaçamento duplo */
+.artigo-body li:last-child {
+    margin-bottom: 0;
+}
+
+.artigo-body li::before {
+    content: '\2022'; /* Caractere de bullet (•) */
     color: var(--color-accent);
     font-weight: bold;
-    font-size: 1.2em;
-    line-height: 1.5; /* Align with text */
+    /* Alinha o bullet com a primeira linha do texto, mesmo que o texto tenha várias linhas */
+    line-height: 1.8;
 }
 
 /* ---------------------------------- */
