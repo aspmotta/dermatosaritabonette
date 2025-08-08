@@ -1226,7 +1226,7 @@ img {
     list-style-type: none;
 }
 .artigo-body ul li::before {
-    content: '\\2022';
+    content: '\2022';
     color: var(--color-accent);
     font-weight: bold;
     font-size: 1.2em;
