@@ -1056,6 +1056,116 @@ img {
     }
 }
 
+/* ------------------------------------------------- */
+/* ESTILOS PÁGINA DE SERVIÇO (Conteúdo Detalhado)    */
+/* ------------------------------------------------- */
+
+.servico-content-section .content-container {
+    max-width: 800px; /* Limita a largura do texto para melhor legibilidade */
+    margin: 0 auto;
+}
+
+.servico-content-section h2 {
+    font-size: clamp(1.6em, 3.5vw, 2.2em);
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+.servico-content-section h2:first-of-type {
+    margin-top: 0;
+}
+
+/* Linha de destaque abaixo dos títulos h2 */
+.servico-content-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: 0.6rem 0 0;
+}
+
+.servico-content-section p,
+.servico-content-section li {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333; /* Cor de texto um pouco mais escura para contraste */
+    margin-bottom: 1.25rem;
+}
+
+.servico-content-section ul {
+    list-style: none; /* Remove o bullet point padrão */
+    padding-left: 1.75rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.servico-content-section ul li {
+    position: relative;
+    padding-left: 1.25rem; /* Espaço para o ícone customizado */
+    margin-bottom: 0.8rem; /* Espaçamento entre os itens da lista */
+}
+
+/* Ícone customizado para os itens da lista */
+.servico-content-section ul li::before {
+    content: '\2713'; /* Código para o checkmark (✓) */
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Seção de Call to Action no final da página */
+.servico-content-section .cta-section {
+    margin-top: 3.5rem;
+    padding: 2.5rem;
+    border-top: 2px solid var(--color-element);
+    background-color: var(--color-section); /* Fundo bege claro para contraste */
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.servico-content-section .cta-section h3 {
+    font-size: clamp(1.4em, 3vw, 1.8em);
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.servico-content-section .cta-section p {
+    font-size: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+    opacity: 0.9;
+}
+
+.servico-content-section .cta-section .btn--primary {
+    padding: 0.85rem 2rem; /* Botão um pouco maior */
+    font-size: 1rem;
+}
+
+.img-servico-destaque {
+    margin: 2rem 0 3rem;
+    width: 100%;
+}
+.img-servico-destaque img {
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px rgba(31, 47, 60, 0.1);
+    width: 100%; /* Garante que a imagem ocupe o espaço do figure */
+}
+.img-servico-destaque figcaption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+
 /* ---------------------------------- */
 /* SEÇÃO CTA FINAL COM LOCAIS         */
 /* ---------------------------------- */
